@@ -36,6 +36,27 @@
                 "${workspaceFolder}/contoso-names-service.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "bridge-to-kubernetes.resource",
+            "type": "bridge-to-kubernetes.resource",
+            "resource": "contoso-names-service",
+            "resourceType": "service",
+            "ports": [
+                8080
+            ],
+            "targetCluster": "contosoeoent",
+            "targetNamespace": "contoso-names",
+            "useKubernetesServiceEnvironmentVariables": true,
+            "isolateAs": "vscode-ff9e"
+        },
+        {
+            "label": "bridge-to-kubernetes.compound",
+            "dependsOn": [
+                "bridge-to-kubernetes.resource",
+                "build"
+            ],
+            "dependsOrder": "sequence"
         }
     ]
 }
